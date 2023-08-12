@@ -18,6 +18,7 @@ code {
 }
 
 h2,
+h3,
 p {
   margin: 0;
 }
@@ -32,6 +33,24 @@ img {
   display: block;
   max-width: 100%;
   object-fit: cover;
+}
+
+button {
+  display: block;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #eef0f2;
+  border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  background-color: #fdfdfe;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #2d66c3;
 }
 
 
