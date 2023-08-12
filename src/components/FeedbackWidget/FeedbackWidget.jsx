@@ -1,6 +1,8 @@
+import { Section } from './FeedbackWidget.styled';
+
 export const FeedbackWidget = () => {
   return (
-    <section>
+    <Section>
       <h2>Please leave feedback</h2>
       <ul>
         <li>
@@ -25,6 +27,6 @@ export const FeedbackWidget = () => {
           <p>Bad</p>
         </li>
       </ul>
-    </section>
+    </Section>
   );
 };
