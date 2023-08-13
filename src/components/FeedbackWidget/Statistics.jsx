@@ -1,6 +1,6 @@
 import { RatingList } from './FeedbackWidget.styled';
 
-export const Statistics = ({ rating, total }) => {
+export const Statistics = ({ rating, total, positivePercentage }) => {
   return (
     <RatingList>
       <li>
@@ -13,10 +13,10 @@ export const Statistics = ({ rating, total }) => {
         <p>Bad: {rating.bad}</p>
       </li>
       <li>
-        <p>Total: {rating.total}</p>
+        <p>Total: {total}</p>
       </li>
       <li>
-        <p>Positive feedback: {rating.positive}%</p>
+        <p>Positive feedback: {positivePercentage}%</p>
       </li>
     </RatingList>
   );

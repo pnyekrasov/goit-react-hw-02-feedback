@@ -16,28 +16,36 @@ export class App extends Component {
     this.setState(prevState => {
       return {
         [type]: prevState[type] + 1,
-        total: prevState.total + 1,
       };
     });
   };
 
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
   countPositiveFeedbackPercentage = () => {
-    return Math.round((this.state.good * 100) / this.state.total);
+    return Math.round((this.state.good * 100) / this.countTotalFeedback());
   };
 
   render() {
+    const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
-    console.log(positivePercentage);
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions onLeaveFeedback={this.handeleButtonClick} />
         </Section>
         <Section title="Statistics">
-          {this.state.total === 0 ? (
+          {total === 0 ? (
             <Notification message="There is no feedback" />
           ) : (
-            <Statistics rating={this.state} />
+            <Statistics
+              rating={this.state}
+              positivePercentage={positivePercentage}
+              total={total}
+            />
           )}
         </Section>
       </>
