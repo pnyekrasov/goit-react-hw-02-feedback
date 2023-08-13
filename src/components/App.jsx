@@ -10,7 +10,6 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
     total: 0,
-    positive: 0,
   };
 
   handeleButtonClick = type => {
@@ -18,21 +17,28 @@ export class App extends Component {
       return {
         [type]: prevState[type] + 1,
         total: prevState.total + 1,
-        positive: Math.round(Number((this.state.good / this.total) * 100)),
       };
     });
   };
 
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good * 100) / this.state.total);
+  };
+
   render() {
+    const positivePercentage = this.countPositiveFeedbackPercentage();
+    console.log(positivePercentage);
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions onLeaveFeedback={this.handeleButtonClick} />
         </Section>
         <Section title="Statistics">
-          if (this.state.total === 0)
-          {<Notification message="There is no feedback" />} else
-          {<Statistics rating={this.state} />}
+          {this.state.total === 0 ? (
+            <Notification message="There is no feedback" />
+          ) : (
+            <Statistics rating={this.state} />
+          )}
         </Section>
       </>
     );
