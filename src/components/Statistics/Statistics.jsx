@@ -1,4 +1,4 @@
-import { RatingList } from './FeedbackWidget.styled';
+import { RatingList } from './Statistics.styled';
 
 export const Statistics = ({ rating, total, positivePercentage }) => {
   return (

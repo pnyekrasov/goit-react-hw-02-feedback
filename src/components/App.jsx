@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import { FeedbackOptions } from './FeedbackWidget/FeedbackOptions';
-import { Statistics } from './FeedbackWidget/Statistics';
-import { Section } from './FeedbackWidget/Section';
-import { Notification } from './FeedbackWidget/Notification';
+import { Statistics } from './Statistics/Statistics';
+import { Section } from './Section/Section';
+import { Notification } from './Notification/Notification';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -11,10 +11,10 @@ export class App extends Component {
     bad: 0,
   };
 
-  handeleButtonClick = type => {
+  handeleButtonClick = value => {
     this.setState(prevState => {
       return {
-        [type]: prevState[type] + 1,
+        [value]: prevState[value] + 1,
       };
     });
   };
@@ -29,12 +29,16 @@ export class App extends Component {
   };
 
   render() {
+    const keys = Object.keys(this.state);
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.handeleButtonClick} />
+          <FeedbackOptions
+            options={keys}
+            onLeaveFeedback={this.handeleButtonClick}
+          />
         </Section>
         <Section title="Statistics">
           {total === 0 ? (

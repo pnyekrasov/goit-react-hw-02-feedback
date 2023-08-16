@@ -1,4 +1,4 @@
-import { Layout, Topic } from './FeedbackWidget.styled';
+import { Layout, Topic } from './Section.styled';
 
 export const Section = ({ title, children }) => {
   return (
